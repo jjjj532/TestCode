@@ -137,9 +137,10 @@ jobs:
           merge-multiple: true
       - name: List downloaded files
         run: ls -la
-      - name: Create Release via API
+      - name: Create Release via API and upload assets
         run: |
-          curl -s -X POST \
+          # Create release
+          RELEASE_RESPONSE=$(curl -s -X POST \
             -H "Authorization: token ${{ secrets.GITHUB_TOKEN }}" \
             -H "Accept: application/vnd.github+json" \
             "https://api.github.com/repos/jjjj532/TestCode/releases" \
@@ -149,4 +150,11 @@ jobs:
               "body": "TestCode v0.1.0 Release",
               "draft": false,
               "prerelease": false
-            }'
+            }')
+          echo "Release response: $RELEASE_RESPONSE"
+          
+          # Upload assets
+          for f in testcode-*; do
+            echo "Uploading $f..."
+            gh release upload v0.1.0 "$f" --clobber
+          done
