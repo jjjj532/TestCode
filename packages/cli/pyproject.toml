@@ -1,0 +1,15 @@
+[project]
+name = "opencode-cli"
+version = "0.1.0"
+requires-python = ">=3.12"
+dependencies = ["opencode-core>=0.1.0", "typer>=0.15"]
+
+[project.scripts]
+opencode = "opencode_cli.main:app"
+
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[tool.uv]
+dev-dependencies = ["pytest>=8", "pytest-asyncio>=0.24"]
