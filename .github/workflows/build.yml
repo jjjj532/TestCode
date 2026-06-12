@@ -126,7 +126,6 @@ jobs:
         with:
           name: testcode-${{ matrix.os }}
           path: dist/testcode*
-          compression-level: 0
 
   release:
     needs: build
@@ -140,7 +139,5 @@ jobs:
         run: ls -la
       - name: Create Release
         run: |
-          echo "=== Files in current directory ===" 
-          ls -la
-          echo "=== Creating release ==="
-          gh release create v0.1.0 --title "TestCode v0.1.0" --notes "TestCode release" testcode-* 2>&1
+          ls -la testcode-*
+          gh release create v0.1.0 testcode-* --title "TestCode v0.1.0" --notes "TestCode v0.1.0 Release"
