@@ -64,3 +64,18 @@ def test_registry_list():
     registry.register("anthropic", provider)
     names = registry.list_providers()
     assert "anthropic" in names
+
+
+from opencode_llm.providers._openai import OpenAIProvider
+
+
+def test_openai_requires_api_key(monkeypatch):
+    monkeypatch.delenv("OPENAI_API_KEY", raising=False)
+    with pytest.raises(ValueError, match="OPENAI_API_KEY"):
+        OpenAIProvider()
+
+
+def test_openai_properties():
+    provider = OpenAIProvider(api_key="test-key")
+    assert provider.name == "openai"
+    assert provider.default_model
