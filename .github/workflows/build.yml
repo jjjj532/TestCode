@@ -34,8 +34,15 @@ jobs:
           uv sync
           uv pip install pyinstaller
 
+      - name: Debug - check Python and packages
+        shell: bash
+        run: |
+          uv run python -c "import testcode_core; print('testcode_core OK:', testcode_core.__file__)"
+          uv run python -c "import sqlalchemy; print('sqlalchemy OK')"
+          uv run python -c "import httpx; print('httpx OK')"
+
       - name: Build with PyInstaller
-        run: pyinstaller --clean scripts/build.spec
+        run: uv run pyinstaller --clean scripts/build.spec
 
       - name: List dist contents
         run: ls -la dist/
