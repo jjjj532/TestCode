@@ -51,7 +51,11 @@ jobs:
       - name: Build with PyInstaller
         shell: bash
         run: |
-          uv run pyinstaller --clean --onefile --name testcode \
+          case "${{ matrix.os }}" in
+            windows-latest) SUFFIX=".exe" ;;
+            *) SUFFIX="" ;;
+          esac
+          uv run pyinstaller --clean --onefile --name "testcode-${{ matrix.os }}${SUFFIX}" \
             --hidden-import testcode_core \
             --hidden-import testcode_core.agent \
             --hidden-import testcode_core.agent.context \
@@ -122,6 +126,7 @@ jobs:
         with:
           name: testcode-${{ matrix.os }}
           path: dist/testcode*
+          compression-level: 0
 
   release:
     needs: build
@@ -134,4 +139,4 @@ jobs:
       - name: Create Release
         uses: softprops/action-gh-release@v2
         with:
-          files: testcode-*/
+          files: testcode-*
