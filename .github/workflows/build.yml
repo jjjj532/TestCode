@@ -126,20 +126,3 @@ jobs:
         with:
           name: testcode-${{ matrix.os }}
           path: dist/testcode*
-
-  # Release step disabled - needs investigation
-  # release:
-    steps:
-      - uses: actions/download-artifact@v4
-        with:
-          merge-multiple: true
-      - name: List downloaded files
-        run: ls -la
-      - name: Create Release
-        run: |
-          echo "Creating release for v0.1.0"
-          ls -la
-          # Simple test - just create an empty file and try uploading it
-          echo "test" > test.txt
-          gh release create v0.1.0 --title "TestCode v0.1.0" --notes "Initial release" ./test.txt
-          ls testcode-* 2>/dev/null && gh release upload v0.1.0 testcode-* --clobber || true
