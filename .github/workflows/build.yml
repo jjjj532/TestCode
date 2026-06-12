@@ -114,6 +114,7 @@ jobs:
             scripts/launcher.py 2>&1
 
       - name: List dist contents
+        shell: bash
         run: ls -la dist/
 
       - name: Upload artifact
