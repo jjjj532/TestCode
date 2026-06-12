@@ -138,10 +138,10 @@ jobs:
       - name: List downloaded files
         run: ls -la
       - name: Create Release
-        uses: softprops/action-gh-release@v1
-        with:
-          files: testcode-*
-          draft: false
-          prerelease: false
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          echo "Creating release for v0.1.0"
+          ls -la
+          # Simple test - just create an empty file and try uploading it
+          echo "test" > test.txt
+          gh release create v0.1.0 --title "TestCode v0.1.0" --notes "Initial release" ./test.txt
+          ls testcode-* 2>/dev/null && gh release upload v0.1.0 testcode-* --clobber || true
