@@ -143,3 +143,4 @@ jobs:
         with:
           files: testcode-*
           draft: false
+          tag_name: ${{ github.ref }}
