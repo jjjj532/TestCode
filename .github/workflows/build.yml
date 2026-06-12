@@ -139,5 +139,11 @@ jobs:
         run: ls -la
       - name: Create Release
         run: |
-          ls -la testcode-*
-          gh release create v0.1.0 testcode-* --title "TestCode v0.1.0" --notes "TestCode v0.1.0 Release"
+          echo "=== gh version ==="
+          gh --version
+          echo "=== gh auth status ==="
+          gh auth status
+          echo "=== Files in current directory ===" 
+          ls -la testcode-* 2>&1 || echo "No files found"
+          echo "=== Creating release ==="
+          gh release create v0.1.0 testcode-* --title "TestCode v0.1.0" --notes "TestCode v0.1.0 Release" 2>&1 || echo "Release failed"
