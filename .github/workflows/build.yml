@@ -35,69 +35,10 @@ jobs:
           uv pip install pyinstaller
 
       - name: Build with PyInstaller
-        run: |
-          python scripts/launcher.py
-          pyinstaller --clean --onefile --name testcode \
-            --hidden-import testcode_core \
-            --hidden-import testcode_core.agent \
-            --hidden-import testcode_core.agent.context \
-            --hidden-import testcode_core.agent.loop \
-            --hidden-import testcode_core.database \
-            --hidden-import testcode_core.database.engine \
-            --hidden-import testcode_core.database.models \
-            --hidden-import testcode_core.session \
-            --hidden-import testcode_core.session.store \
-            --hidden-import testcode_core.tools \
-            --hidden-import testcode_core.tools.registry \
-            --hidden-import testcode_core.tools.bash \
-            --hidden-import testcode_core.tools.file_read \
-            --hidden-import testcode_core.tools.file_write \
-            --hidden-import testcode_core.tools.file_edit \
-            --hidden-import testcode_core.tools.glob_tool \
-            --hidden-import testcode_core.tools.grep_tool \
-            --hidden-import testcode_core.tools.web_fetch \
-            --hidden-import testcode_llm \
-            --hidden-import testcode_llm.provider \
-            --hidden-import testcode_llm.registry \
-            --hidden-import testcode_llm.types \
-            --hidden-import testcode_llm.providers \
-            --hidden-import testcode_llm.providers._anthropic \
-            --hidden-import testcode_llm.providers._openai \
-            --hidden-import testcode_cli \
-            --hidden-import testcode_cli.main \
-            --hidden-import testcode_tui \
-            --hidden-import testcode_tui.app \
-            --hidden-import testcode_tui.screens \
-            --hidden-import testcode_tui.screens.main_screen \
-            --hidden-import testcode_tui.widgets \
-            --hidden-import testcode_tui.widgets.chat_view \
-            --hidden-import testcode_tui.widgets.input_area \
-            --hidden-import testcode_tui.widgets.session_list \
-            --hidden-import testcode_tui.widgets.status_bar \
-            --hidden-import testcode_server \
-            --hidden-import testcode_server.app \
-            --hidden-import testcode_sdk \
-            --hidden-import testcode_sdk.client \
-            --hidden-import testcode_sdk.types \
-            --hidden-import testcode_plugin \
-            --hidden-import testcode_plugin.hooks \
-            --hidden-import testcode_plugin.decorators \
-            --hidden-import testcode_plugin.loader \
-            --hidden-import testcode_desktop \
-            --hidden-import testcode_desktop.main \
-            --hidden-import sqlalchemy \
-            --hidden-import sqlalchemy.ext.asyncio \
-            --hidden-import aiosqlite \
-            --hidden-import fastapi \
-            --hidden-import uvicorn \
-            --hidden-import pydantic \
-            --hidden-import sse_starlette \
-            --hidden-import textual \
-            --hidden-import textual_serve \
-            --hidden-import textual_serve.server \
-            --hidden-import typer \
-            --hidden-import httpx \
-            scripts/launcher.py
+        run: pyinstaller --clean scripts/build.spec
+
+      - name: List dist contents
+        run: ls -la dist/
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4
