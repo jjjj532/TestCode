@@ -1,8 +1,8 @@
 import pytest
 import tempfile
 import os
-from opencode_core.database.engine import DatabaseEngine
-from opencode_core.database.models import SessionModel, MessageModel
+from testcode_core.database.engine import DatabaseEngine
+from testcode_core.database.models import SessionModel, MessageModel
 
 
 @pytest.mark.asyncio

@@ -1,8 +1,8 @@
 import pytest
-from opencode_tui.widgets.chat_view import ChatView
-from opencode_tui.widgets.input_area import InputArea
-from opencode_tui.widgets.status_bar import OpenCodeStatusBar
-from opencode_tui.widgets.session_list import SessionList
+from testcode_tui.widgets.chat_view import ChatView
+from testcode_tui.widgets.input_area import InputArea
+from testcode_tui.widgets.status_bar import TestCodeStatusBar
+from testcode_tui.widgets.session_list import SessionList
 
 
 def test_chat_view():
@@ -21,7 +21,7 @@ def test_input_area():
 
 
 def test_status_bar():
-    sb = OpenCodeStatusBar()
+    sb = TestCodeStatusBar()
     sb.model_name = "claude"
     sb.session_count = 3
     text = sb._build_text()
@@ -35,10 +35,10 @@ def test_session_list():
 
 
 def test_cli_imports():
-    from opencode_cli.main import app
+    from testcode_cli.main import app
     assert app is not None
 
 
 def test_tui_app_import():
-    from opencode_tui.app import OpenCodeApp
-    assert OpenCodeApp is not None
+    from testcode_tui.app import TestCodeApp
+    assert TestCodeApp is not None

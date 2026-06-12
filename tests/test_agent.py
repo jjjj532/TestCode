@@ -1,8 +1,8 @@
 import pytest
-from opencode_core.agent.context import SystemContext
-from opencode_core.agent.loop import AgentLoop
-from opencode_core.tools.registry import ToolRegistry
-from opencode_llm.types import Message, StreamEvent
+from testcode_core.agent.context import SystemContext
+from testcode_core.agent.loop import AgentLoop
+from testcode_core.tools.registry import ToolRegistry
+from testcode_llm.types import Message, StreamEvent
 
 
 def test_system_context():

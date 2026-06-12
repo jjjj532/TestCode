@@ -1,4 +1,4 @@
-from opencode_llm.types import Message, StreamEvent, ToolDef
+from testcode_llm.types import Message, StreamEvent, ToolDef
 
 
 def test_message_defaults():

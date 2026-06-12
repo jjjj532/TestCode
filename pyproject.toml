@@ -1,15 +1,19 @@
 [project]
-name = "opencode-workspace"
+name = "testcode-workspace"
 version = "0.1.0"
 requires-python = ">=3.12"
 
 [tool.uv]
-dev-dependencies = ["pytest>=8", "pytest-asyncio>=0.24"]
+dev-dependencies = ["pytest>=8", "pytest-asyncio>=0.24", "httpx>=0.28"]
 
 [tool.uv.sources]
-opencode-llm = { workspace = true }
-opencode-core = { workspace = true }
-opencode-tui = { workspace = true }
+testcode-llm = { workspace = true }
+testcode-core = { workspace = true }
+testcode-tui = { workspace = true }
+testcode-server = { workspace = true }
+testcode-sdk = { workspace = true }
+testcode-plugin = { workspace = true }
+testcode-desktop = { workspace = true }
 
 [tool.uv.workspace]
 members = ["packages/*"]

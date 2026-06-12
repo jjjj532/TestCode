@@ -1,11 +1,11 @@
 [project]
-name = "opencode-cli"
+name = "testcode-cli"
 version = "0.1.0"
 requires-python = ">=3.12"
-dependencies = ["opencode-core>=0.1.0", "opencode-tui>=0.1.0", "typer>=0.15"]
+dependencies = ["testcode-core>=0.1.0", "testcode-tui>=0.1.0", "testcode-server>=0.1.0", "testcode-plugin>=0.1.0", "testcode-desktop>=0.1.0", "typer>=0.15"]
 
 [project.scripts]
-opencode = "opencode_cli.main:app"
+testcode = "testcode_cli.main:app"
 
 [build-system]
 requires = ["hatchling"]

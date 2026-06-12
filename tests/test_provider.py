@@ -1,8 +1,8 @@
 import pytest
-from opencode_llm.providers._anthropic import AnthropicProvider
-from opencode_llm.registry import ProviderRegistry
-from opencode_llm.types import Message, StreamEvent, ToolDef
-from opencode_llm.provider import LLMProvider
+from testcode_llm.providers._anthropic import AnthropicProvider
+from testcode_llm.registry import ProviderRegistry
+from testcode_llm.types import Message, StreamEvent, ToolDef
+from testcode_llm.provider import LLMProvider
 
 
 class MockProvider(LLMProvider):
@@ -66,7 +66,7 @@ def test_registry_list():
     assert "anthropic" in names
 
 
-from opencode_llm.providers._openai import OpenAIProvider
+from testcode_llm.providers._openai import OpenAIProvider
 
 
 def test_openai_requires_api_key(monkeypatch):

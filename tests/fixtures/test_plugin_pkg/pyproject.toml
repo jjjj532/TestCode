@@ -1,0 +1,8 @@
+[project]
+name = "test-plugin-pkg"
+version = "0.1.0"
+requires-python = ">=3.12"
+dependencies = ["testcode-plugin>=0.1.0"]
+
+[project.entry-points."testcode.plugins"]
+test_plugin = "test_plugin_pkg:plugin"

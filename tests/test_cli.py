@@ -1,6 +1,6 @@
 import pytest
 from typer.testing import CliRunner
-from opencode_cli.main import app
+from testcode_cli.main import app
 
 runner = CliRunner()
 

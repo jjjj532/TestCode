@@ -1,5 +1,5 @@
 [project]
-name = "opencode-llm"
+name = "testcode-llm"
 version = "0.1.0"
 requires-python = ">=3.12"
 dependencies = ["httpx>=0.28"]

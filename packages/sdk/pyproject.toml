@@ -1,11 +1,8 @@
 [project]
-name = "testcode-tui"
+name = "testcode-sdk"
 version = "0.1.0"
 requires-python = ">=3.12"
-dependencies = [
-    "testcode-core>=0.1.0",
-    "textual>=1.0.0",
-]
+dependencies = ["httpx>=0.28"]
 
 [build-system]
 requires = ["hatchling"]
