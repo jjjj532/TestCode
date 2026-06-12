@@ -1,4 +1,6 @@
 import pytest
+from opencode_llm.providers._anthropic import AnthropicProvider
+from opencode_llm.registry import ProviderRegistry
 from opencode_llm.types import Message, StreamEvent, ToolDef
 from opencode_llm.provider import LLMProvider
 
@@ -34,3 +36,31 @@ async def test_provider_accepts_tools():
     tools = [ToolDef(name="bash", description="Run a command", parameters={"type": "object"})]
     events = [e async for e in provider.chat([], tools=tools)]
     assert len(events) == 2
+
+
+def test_anthropic_requires_api_key(monkeypatch):
+    monkeypatch.delenv("ANTHROPIC_API_KEY", raising=False)
+    with pytest.raises(ValueError, match="ANTHROPIC_API_KEY"):
+        AnthropicProvider()
+
+
+def test_anthropic_properties():
+    provider = AnthropicProvider(api_key="test-key")
+    assert provider.name == "anthropic"
+    assert provider.default_model
+
+
+def test_registry_register_and_get():
+    registry = ProviderRegistry()
+    provider = AnthropicProvider(api_key="test-key")
+    registry.register("anthropic", provider)
+    assert registry.get("anthropic") is provider
+    assert registry.get("nonexistent") is None
+
+
+def test_registry_list():
+    registry = ProviderRegistry()
+    provider = AnthropicProvider(api_key="test-key")
+    registry.register("anthropic", provider)
+    names = registry.list_providers()
+    assert "anthropic" in names
