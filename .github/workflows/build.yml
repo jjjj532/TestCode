@@ -140,4 +140,7 @@ jobs:
         run: ls -la
       - name: Create Release
         run: |
-          gh release create v0.1.0 --title "TestCode v0.1.0" --notes "TestCode release" testcode-*
+          echo "=== Files in current directory ===" 
+          ls -la
+          echo "=== Creating release ==="
+          gh release create v0.1.0 --title "TestCode v0.1.0" --notes "TestCode release" testcode-* 2>&1
