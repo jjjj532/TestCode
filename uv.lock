@@ -363,6 +363,7 @@ version = "0.1.0"
 source = { editable = "packages/cli" }
 dependencies = [
     { name = "opencode-core" },
+    { name = "opencode-tui" },
     { name = "typer" },
 ]
 
@@ -375,6 +376,7 @@ dev = [
 [package.metadata]
 requires-dist = [
     { name = "opencode-core", editable = "packages/core" },
+    { name = "opencode-tui", editable = "packages/tui" },
     { name = "typer", specifier = ">=0.15" },
 ]
 

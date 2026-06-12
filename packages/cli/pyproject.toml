@@ -2,7 +2,7 @@
 name = "opencode-cli"
 version = "0.1.0"
 requires-python = ">=3.12"
-dependencies = ["opencode-core>=0.1.0", "typer>=0.15"]
+dependencies = ["opencode-core>=0.1.0", "opencode-tui>=0.1.0", "typer>=0.15"]
 
 [project.scripts]
 opencode = "opencode_cli.main:app"

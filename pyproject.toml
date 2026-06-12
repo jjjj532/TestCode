@@ -9,6 +9,7 @@ dev-dependencies = ["pytest>=8", "pytest-asyncio>=0.24"]
 [tool.uv.sources]
 opencode-llm = { workspace = true }
 opencode-core = { workspace = true }
+opencode-tui = { workspace = true }
 
 [tool.uv.workspace]
 members = ["packages/*"]

@@ -3,6 +3,7 @@ import os
 
 import typer
 from opencode_core.agent.loop import AgentLoop
+from opencode_tui.app import OpenCodeApp
 from opencode_core.tools.registry import ToolRegistry
 from opencode_core.tools.bash import bash
 from opencode_core.tools.file_read import file_read
@@ -108,6 +109,14 @@ def list_tools():
     _register_tools(registry)
     for td in registry.list_defs():
         print(f"  {td.name}: {td.description}")
+
+
+@app.command()
+def dev():
+    """Start the TUI application"""
+    provider = _get_provider()
+    tui_app = OpenCodeApp(llm_provider=provider)
+    tui_app.run()
 
 
 if __name__ == "__main__":
